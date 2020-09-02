@@ -1,0 +1,7 @@
+server:  port: 8081
+
+zuul:
+  routes:
+    fleet:
+      path: /api/fleet/**
+      url: http://localhost:9091/api/fleet      sensitiveHeaders: Cookie,Set-Cookie    user:      path: /api/user/**      url: http://localhost:9092/api/user      sensitiveHeaders: Cookie,Set-Cookie    ignoredHeaders: Access-Control-Allow-Credentials,Access-Control-Allow-Origin            message:      path: /api/message/**      url: http://localhost:9093/api/message      sensitiveHeaders: Cookie,Set-Cookie    analytics:          path: /api/analytics/**      url: http://localhost:9097/api/analytics      sensitiveHeaders: Cookie,Set-Cookie    logging:  level:    root: ERROR    org.springframework: ERROR    com.zuul: TRACE  file:    name: /home/ubuntu/scorpious/app-logs/gateway-zull.log    max-size: 10 MB      
