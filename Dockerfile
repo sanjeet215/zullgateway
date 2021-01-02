@@ -1,4 +1,4 @@
-FROM adoptopenjdk/openjdk11:alpine-jre as build
+FROM adoptopenjdk/openjdk11 as build
 # Build Stage for Spring boot application image
 #FROM openjdk:8-jdk-alpine as build
 
@@ -18,7 +18,7 @@ RUN ./mvnw package -DskipTests
 RUN mkdir -p target/dependency && (cd target/dependency; jar -xf ../*.jar)
 
 # Production Stage for Spring boot application image
-FROM adoptopenjdk/openjdk11:alpine-jre as production
+FROM adoptopenjdk/openjdk11 as production
 ARG DEPENDENCY=/app/target/dependency
 
 # Copy the dependency application file from build stage artifact
